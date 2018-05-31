@@ -1,4 +1,4 @@
-class player{
+public class player{
   int x,y,speed,size;
   boolean[] keys = new boolean [5];
   player(int x1, int y1, int speed1, int size1){
@@ -22,6 +22,7 @@ class player{
       x = x + speed;
     }
     rect(x,y,size,size);
+    checkWalls();
   }
   
   void keyP(){
@@ -53,4 +54,24 @@ class player{
     keys[4]=false;
     }
     }
+    
+    public void checkWalls() {
+    if (x < size / 2) {
+      keys[1] = false;
+      x = size / 2;
+    }
+    if (x > width - (size / 2)) {
+      keys[2] = false;
+      x = width - (size/ 2);//prevents 2 true in a row
+    }
+    if (y < size / 2) {
+      keys[3] = false;
+      y = size / 2;//prevents 2 true in a row
+    }
+    if (y > height - (size / 2)) {
+      keys[4] = false;
+         y = height - (size / 2);//prevents 2 true in a row
+    }
+  }
+   
 }

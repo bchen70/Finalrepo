@@ -1,6 +1,6 @@
 player player;
 void settings(){
-  size(800,800);
+  size(600,600);
   player = new player(400,400,3,20);
 }
 
