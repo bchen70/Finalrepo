@@ -1,7 +1,7 @@
-public class player{
+public class Player{
   int x,y,speed,size;
   boolean[] keys = new boolean [5];
-  player(int x1, int y1, int speed1, int size1){
+  Player(int x1, int y1, int speed1, int size1){
     x = x1;
     y = y1;
     speed = speed1;
@@ -60,17 +60,17 @@ public class player{
       keys[1] = false;
       x = size / 2;
     }
-    if (x > width - (size / 2)) {
+    if (x > width - (size * 2)) {
       keys[2] = false;
-      x = width - (size/ 2);//prevents 2 true in a row
+      x = width - (size  * 2);//prevents 2 true in a row
     }
     if (y < size / 2) {
       keys[3] = false;
       y = size / 2;//prevents 2 true in a row
     }
-    if (y > height - (size / 2)) {
+    if (y > height - (size * 2)) {
       keys[4] = false;
-         y = height - (size / 2) - 5;//prevents 2 true in a row
+         y = height - (size * 2 ) ;//prevents 2 true in a row
     }
   }
    
