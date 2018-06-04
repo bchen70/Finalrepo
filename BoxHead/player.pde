@@ -70,7 +70,7 @@ public class player{
     }
     if (y > height - (size / 2)) {
       keys[4] = false;
-         y = height - (size / 2);//prevents 2 true in a row
+         y = height - (size / 2) - 5;//prevents 2 true in a row
     }
   }
    
