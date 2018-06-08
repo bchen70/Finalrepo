@@ -1,9 +1,8 @@
-PFont orbitron;
 ArrayList<Enemy> enemies;
 boolean gameActive, win, waveComplete, menuDisplay;
 int menuTextTime, menuTextCD;
 int level, currentWave, currentEnemies, remainingEnemies;
-int totalKills, totalShots, score, state, powerUpTime, powerUpCD, startTime;
+int totalKills, totalShots, score, state, startTime;
 int hitTime, hitTimeCD;
 final int displayTime = 1000;
 Player playerCharacter;
@@ -17,8 +16,6 @@ void setup() {
   waves = xml.getChildren("wave");
   gameActive = false;
   state = 0;
-  powerUpTime = millis();
-  powerUpCD = (int) random(10000, 15000);
   hitTimeCD = 800;
   upPressed = leftPressed = downPressed = rightPressed = false;
 }
@@ -79,14 +76,13 @@ void initializeGame() {
   gameActive = true;
 }
 
-// Handles drawing and rotation of player character + the laser aim
 void drawPlayer() {
   fill(playerCharacter.fill);
   stroke(playerCharacter.stroke);
   playerCharacter.angle = atan2(playerCharacter.location.x - mouseX, playerCharacter.location.y - mouseY);
   translate(playerCharacter.location.x, playerCharacter.location.y);
   strokeWeight(4);
-  rect(0, 0, 30, 30);
+  rect(0, 0, 40, 40);
 }
 
 // Draws game text 

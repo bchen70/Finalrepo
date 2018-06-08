@@ -33,7 +33,7 @@ class Enemy {
           p.hitCooldown = true;
         }
       }
-      ellipse(location.x, location.y, size, size);
+      rect(location.x, location.y, size, size);
     }
   }
 }
