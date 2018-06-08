@@ -1,81 +1,51 @@
-public class Player{
-  int x,y,speed,size;
-  int health;
-  boolean[] keys = new boolean [5];
-  Player(int x1, int y1, int speed1, int size1){
-    x = x1;
-    y = y1;
-    speed = speed1;
-    size = size1;
+class Player {
+  PVector location; 
+  int movementSpeed;
+  float angle;
+  color fill, stroke, projectileFill;
+  int health, maxHealth, lastProjectileTime, projectileCD, ammo;
+  boolean hitCooldown = false;
+
+  Player() {
+    movementSpeed = 5; 
+    angle = 0; 
+    stroke = color(#FFFFFF);
+    fill = color(0);
+    health = 6;
+    maxHealth = health;
+    projectileCD = 250;
+    projectileFill = color(255);
   }
-  
-  void update(){
-    if (keys[1] == true){
-      y = y - speed;
+
+  void update() {
+    // Handles Movement and constrains player to the screen
+    if (upPressed && location.y - movementSpeed > 0) {
+      location.y -= movementSpeed;
+    } 
+    if (leftPressed && location.x - movementSpeed > 0) { 
+      location.x -= movementSpeed;
+    } 
+    if (downPressed && location.y + movementSpeed < height) {
+      location.y += movementSpeed;
+    } 
+    if (rightPressed && location.x + movementSpeed < width) {
+      location.x += movementSpeed;
     }
-    if (keys[2] == true){
-      x = x - speed;
+
+    // Provides a hit cooldown so player cannot die instantaneously
+    if (hitCooldown) {
+      playerCharacter.stroke = color(255, 0, 0);
+      if (millis() - hitTime > hitTimeCD) {
+        hitCooldown = false;
+        playerCharacter.stroke = color(255);
+      }
     }
-    if (keys[3] == true){
-      y = y + speed;
+
+    // If the player loses all their health, game over
+    if (health <= 0) {
+      gameActive = false;
+      win = false;
+      state = 2  ;
     }
-    if (keys[4] == true){
-      x = x + speed;
-    }
-    rect(x,y,size,size);
-    checkWalls();
-  }
-  
-  void keyP(){
-    if (key == 'w'){
-      keys[1] = true;
-    }
-     if (key == 'a'){
-      keys[2] = true;
-    }
-     if (key == 's'){
-      keys[3] = true;
-    }
-     if (key == 'd'){
-      keys[4] = true;
-    }  
-  }
-  
-  void keyR(){
-    if(key=='w'){
-    keys[1]=false;
-    }
-    if(key=='a'){
-    keys[2]=false;
-    }
-    if(key=='s'){
-    keys[3]=false;
-    }
-    if(key=='d'){
-    keys[4]=false;
-    }
-    }
-    
-    public void checkWalls() {
-    if (x < size / 2) {
-      keys[1] = false;
-      x = size / 2;
-    }
-    if (x > width - (size * 2)) {
-      keys[2] = false;
-      x = width - (size  * 2);//prevents 2 true in a row
-    }
-    if (y < size / 2) {
-      keys[3] = false;
-      y = size / 2;//prevents 2 true in a row
-    }
-    if (y > height - (size * 2)) {
-      keys[4] = false;
-         y = height - (size * 2 ) ;//prevents 2 true in a row
-    }
-  }
-  public void decreaseHealth(int amount){
-    health-=amount;
-  }
-   
+}
 }
