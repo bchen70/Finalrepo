@@ -11,7 +11,7 @@ XML[] waves;
 boolean upPressed, leftPressed, downPressed, rightPressed;
 
 void setup() {
-  size(1080, 720);
+  size(1280, 960);
   xml = loadXML("waves.xml");
   waves = xml.getChildren("wave");
   gameActive = false;
@@ -45,7 +45,8 @@ void drawMenu() {
   }
   if (menuDisplay == true) {
     textSize(40);
-    text("-- Press ENTER to Start --", width/2, height/2 + 50);
+    text("-- Click anywhere on the screen --", width/2, height/2 + 50);
+    text("-- Then press ENTER to Start --", width/2, height/2 );
   } 
 
   textSize(90);
@@ -252,7 +253,7 @@ void keyReleased() {
 // Spawns a new enemy in one of 4 sections off screen
 void spawnEnemy() {
   int r = (int) random(0, 4);
-  color c = color(0, random(200, 255), 0);
+  color c = color(0, 255, 0);
   if (r == 0) {
     enemies.add(new Enemy(new PVector(random(-200, 0), random(-200, height+200)), playerCharacter, c));
   } else if (r == 1) {
