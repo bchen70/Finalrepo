@@ -9,6 +9,6 @@
    <wave id="7" enemies="55"></wave>
    <wave id="8" enemies="79"></wave>
    <wave id="9" enemies="100"></wave>
-   <wave id="FINAL WAVE" enemies="150"></wave
+   <wave id="10" enemies="150"></wave>
 	
 </waves>
