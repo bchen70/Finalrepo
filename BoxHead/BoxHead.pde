@@ -260,7 +260,7 @@ void keyReleased() {
   }  
   void updateEnemies() {
   int m = millis();
-  if (m % 30 == 0 && currentEnemies > 0) {
+  if (m % 10 == 0 && currentEnemies > 0) {
     spawnEnemy();
   }
   for (int i = 0; i < enemies.size (); i++) {
@@ -284,13 +284,13 @@ void spawnEnemy() {
   int r = (int) random(0, 4);
   color c = color(0, 255, 0);
   if (r == 0) {
-    enemies.add(new Enemy(new PVector(random(-200, 0), random(-200, height+200)), playerCharacter, c));
+    enemies.add(new Enemy(new PVector(random(-200, 0), random(-200, height)), playerCharacter, c));
   } else if (r == 1) {
-    enemies.add(new Enemy(new PVector(random(width, width + 200), random(-200, height+200)), playerCharacter, c));
+    enemies.add(new Enemy(new PVector(random(width, width ), random(-200, height)), playerCharacter, c));
   } else if (r == 2) {
-    enemies.add(new Enemy(new PVector(random(width - 200, width + 200), random(height, 200)), playerCharacter, c));
+    enemies.add(new Enemy(new PVector(random(width , width ), random(height, 200)), playerCharacter, c));
   } else {
-    enemies.add(new Enemy(new PVector(random(width - 200, width + 200), random(-200, 0)), playerCharacter, c));
+    enemies.add(new Enemy(new PVector(random(width , width ), random(-200, 0)), playerCharacter, c));
   }
   currentEnemies--;
 }
