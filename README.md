@@ -4,8 +4,11 @@ This is a top down view shooting game where you fight off zombies, and the playe
 
 Some features I have are: 
 1)After each wave, your rate of fire will increase.
+
 2)After each wave, you will regain 1 health. 
+
 3)Sometimes, zombies spawn at different times throughout the wave. For example, you could have 20 or so zombies spawn at the beginning of the wave and after you killed them all, you might have to wait a little bit for other zombies to spawn. The logic behind this was to give players a small break, but it would also keep players tense. (However, sometimes it takes a while zombies to show up on the screen, just wait ~10-20 secs)
+
 4)Keeps track of your accuracy after the game is over(whether you win or lose).
 
 Instructions on how to run:
