@@ -10,4 +10,10 @@
    <wave id="8" enemies="89"></wave>
    <wave id="9" enemies="100"></wave>
    <wave id="10" enemies="150"></wave>
+   <wave id="11" enemies="180"></wave>
+   <wave id="12" enemies="210"></wave>
+   <wave id="13" enemies="230"></wave>	
+   <wave id="14" enemies="250"></wave>	
+   <wave id="14" enemies="300"></wave>
+	
 </waves>
