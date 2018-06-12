@@ -4,6 +4,7 @@ int menuTextTime, menuTextCD;
 int level, currentWave, currentEnemies, remainingEnemies;
 int totalKills, totalShots, score, state, startTime;
 int hitTime, hitTimeCD;
+ArrayList<Projectile> projectiles;
 final int displayTime = 1000;
 Player playerCharacter;
 XML xml;
@@ -35,7 +36,6 @@ void draw() {
 
 // Draws Menu screen
 void drawMenu() {
-  fill(255);
   textAlign(CENTER);
   rectMode(CENTER);
 
@@ -50,8 +50,8 @@ void drawMenu() {
   } 
 
   textSize(90);
-  fill(#20A714);
-  text("Zombie Attack", width/2, height/2 - 100);
+  fill(#FF0000);
+  text("Boxhead", width/2, height/2 - 100);
   fill(255);
   textSize(20);
   text("Controls: ", width/2, height/2 + 200);
@@ -92,6 +92,7 @@ void drawGame() {
     initializeGame();
   }
   playerCharacter.update();
+  updateProjectiles();
   pushMatrix();
   drawPlayer();
   popMatrix();
@@ -102,6 +103,7 @@ void drawGame() {
 // Initializes all global variables for a new wave
 void initializeGame() {
   enemies = new ArrayList<Enemy>();
+  projectiles = new ArrayList<Projectile>();
   currentWave = waves[level].getInt("id");
   currentEnemies = waves[level].getInt("enemies");
   remainingEnemies = currentEnemies;
@@ -228,7 +230,16 @@ void keyReleased() {
     rightPressed = false;
   }
 }
-  
+  void updateProjectiles() {
+  for (int i = 0; i < projectiles.size (); i++) {
+    Projectile p = projectiles.get(i);
+    p.update();
+
+    if (p.location.x < 0 || p.location.x > width || p.location.y < 0 || p.location.y > height || p.active == false) {
+      projectiles.remove(i);
+    }
+  }
+  }  
   void updateEnemies() {
   int m = millis();
   if (m % 30 == 0 && currentEnemies > 0) {

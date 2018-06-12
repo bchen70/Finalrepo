@@ -47,5 +47,21 @@ class Player {
       win = false;
       state = 2  ;
     }
-}
+if (mousePressed) {
+      if (millis() - lastProjectileTime > projectileCD) {
+        PVector mouseLoc = new PVector(mouseX, mouseY);
+        PVector initialLoc = new PVector(location.x, location.y);
+        projectiles.add(new Projectile(playerCharacter, projectileFill, initialLoc, mouseLoc));
+        totalShots++;
+        if (ammo > 0) {
+          ammo--;
+          if (ammo == 0) {
+            projectileCD = 250;
+            projectileFill = color(255);
+          }
+        }
+        lastProjectileTime = millis();
+      }
+    }
+  }
 }
