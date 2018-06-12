@@ -64,7 +64,7 @@ if (mousePressed) {
       }
     }
   }
-  int setHealth(int x){
-     return x = health;
+  void setHealth(int x){
+      health = x;
   }
 }

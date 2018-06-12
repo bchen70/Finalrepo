@@ -153,15 +153,29 @@ void drawText() {
     fill(#00F00D); // Filled with F00D
     textSize(60);
     text("Wave Complete", width/2, height/2);
+
     if (millis() - startTime > displayTime)
     { 
+       if (playerCharacter.health == 5){
+          playerCharacter.setHealth(6);
+      }  
+    else if (playerCharacter.health == 4){
+          playerCharacter.setHealth(5);
+      } 
+     else   if (playerCharacter.health == 3){
+          playerCharacter.setHealth(4);
+      } 
+    else   if (playerCharacter.health == 3){
+          playerCharacter.setHealth(2);
+      } 
+     else if (playerCharacter.health == 1){
+          playerCharacter.setHealth(2);
+      } 
       waveComplete = false;
-    }
-    if (playerCharacter.health < 6){
-      playerCharacter.setHealth(5);
     }
   }
 }
+
 void keyPressed() {
     if (state == 0 && (key == RETURN || key == ENTER)) {
       state = 1;
