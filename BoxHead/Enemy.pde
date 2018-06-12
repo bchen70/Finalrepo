@@ -36,4 +36,5 @@ class Enemy {
       rect(location.x, location.y, size, size);
     }
   }
+
 }

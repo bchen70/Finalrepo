@@ -64,4 +64,7 @@ if (mousePressed) {
       }
     }
   }
+  int setHealth(int x){
+     return x = health;
+  }
 }

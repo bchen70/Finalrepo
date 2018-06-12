@@ -45,7 +45,7 @@ void drawMenu() {
   }
   if (menuDisplay == true) {
     textSize(40);
-    text("-- Click anywhere on the screen --", width/2, height/2 + 50);
+    text("-- Click anywhere on the screen --", width/2, height/2 - 50);
     text("-- Then press ENTER to Start --", width/2, height/2 );
   } 
 
@@ -97,6 +97,7 @@ void drawGame() {
   drawPlayer();
   popMatrix();
   updateEnemies();
+  collisionProjectiles();
   drawText();
 }
 
@@ -155,6 +156,9 @@ void drawText() {
     if (millis() - startTime > displayTime)
     { 
       waveComplete = false;
+    }
+    if (playerCharacter.health < 6){
+      playerCharacter.setHealth(5);
     }
   }
 }
@@ -283,5 +287,21 @@ boolean checkCollision(float x, float y, float x2, float y2, float r) {
     return true;
   } else {
     return false;
+  }
+}
+
+void collisionProjectiles() {
+  for (int i = projectiles.size () - 1; i >= 0; i--) {
+    for (int j = enemies.size () - 1; j >= 0; j--) {
+      Projectile p = projectiles.get(i);
+      Enemy e = enemies.get(j);
+      if (p.active && e.active && checkCollision(p.location.x, p.location.y, e.location.x, e.location.y, 20)) {
+        totalKills++;
+        score += 100;
+        remainingEnemies--;
+        p.active = false;
+        e.active = false;
+      }
+    }
   }
 }

@@ -13,7 +13,7 @@ class Projectile {
     this.mouseLoc = mouseLoc; 
     active = true;
     speed = 12; 
-    size = 5;
+    size = 7;
     this.projectileFill = projectileFill;
     trajectory = PVector.sub(mouseLoc, location); 
     trajectory.normalize(); 
