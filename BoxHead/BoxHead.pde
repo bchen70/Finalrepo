@@ -16,15 +16,16 @@ void setup() {
   waves = xml.getChildren("wave");
   gameActive = false;
   state = 0;
+  menuTextCD = 1000;
   hitTimeCD = 800;
   upPressed = leftPressed = downPressed = rightPressed = false;
 }
 
 void draw() {
   background(0);
-  //if (state == 0) {
-  //  drawMenu();
-  //} 
+  if (state == 0) {
+    drawMenu();
+  } 
     if (state == 1) {
     drawGame();
   } else if (state == 2) {
@@ -32,6 +33,36 @@ void draw() {
   }
 }
 
+// Draws Menu screen
+void drawMenu() {
+  fill(255);
+  textAlign(CENTER);
+  rectMode(CENTER);
+
+  if (millis() - menuTextTime > menuTextCD) {
+    menuDisplay = !menuDisplay;
+    menuTextTime = millis();
+  }
+  if (menuDisplay == true) {
+    textSize(40);
+    text("-- Press ENTER to Start --", width/2, height/2 + 50);
+  } 
+
+  textSize(90);
+  fill(#20A714);
+  text("Zombie Attack", width/2, height/2 - 100);
+  fill(255);
+  textSize(20);
+  text("Controls: ", width/2, height/2 + 200);
+  stroke(255);  
+  strokeWeight(3);
+  line(width/2 + 130 , height/2 + 210, width/2 - 130, height/2 + 210);
+  textSize(20);
+  text("W A S D / Arrow Keys: Move", width/2, height/2 + 250);
+  text("Mouse: Aim and Shoot", width/2, height/2 + 300);
+  stroke(255);
+  strokeWeight(3); 
+}
 // Draws game over screen
 void gameOver() {
   textSize(50);
