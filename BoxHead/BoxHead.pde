@@ -143,14 +143,8 @@ void drawText() {
   text("Wave", width/2, height - 70); 
   text(currentWave, width/2, height - 30);
 
-  if (playerCharacter.projectileCD != 250) { 
-    fill(255);
-    textSize(40);
-    text(playerCharacter.ammo, width - 100, height - 70);
-  }
-
   if (waveComplete) {
-    fill(#00F00D); // Filled with F00D
+    fill(#ffffff); 
     textSize(60);
     text("Wave Complete", width/2, height/2);
 
@@ -171,6 +165,7 @@ void drawText() {
      else if (playerCharacter.health == 1){
           playerCharacter.setHealth(2);
       } 
+      playerCharacter.projectileCD -= 25; //change this number to make game easier :) 
       waveComplete = false;
     }
   }
