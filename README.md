@@ -3,6 +3,7 @@
 This is a top down view shooting game where you fight off zombies, and the player's goal is to get through as many waves of zombies as possible. If you finish Wave 10, you will win. Although my inspiration behind my project was Boxhead, it is definintely different because instead of having each zombie have health bars like in Boxhead, my zombies can only tank one hit at a time. In addition, I implemented mouse movement to aim and shoot at zombies instead of using just the keyboard.    
 
 Some features I have are: 
+
 1)After each wave, your rate of fire will increase.
 
 2)After each wave, you will regain 1 health. 
@@ -13,3 +14,5 @@ Some features I have are:
 
 Instructions on how to run:
 Run it through processing. 
+
+(ALSO NOT SURE WHY USING GITBASH SENT MY COMMITS THROUGH ANOTHER USERNAME (BCHEN75)? IS THAT NORMAL?)
